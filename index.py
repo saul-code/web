@@ -1,7 +1,6 @@
 from flask import Flask, render_template, request
 
-#agrego una carpeta template
-app = Flask(__name__, template_folder = "templates")
+app = Flask(__name__)
 
 @app.route('/')
 def index():
@@ -12,13 +11,12 @@ def about():
 	return render_template('about.html')
 
 #metodo con parametros
-@app.route('/params/')
-@app.route('/params/<name>/')
-@app.route('/params/<name>/<int:num>/')
-def params(name = '', num = ''):
-	#param = request.args.get('params1','no hay parametro')
-	#param_2 = request.args.get('params2', 'no hay parametro')
-	return 'regreso: {}, {}'.format(name,num)
+@app.route('/user/')
+@app.route('/user/<name>')
+def user(name = 'Saul'):
+	my_list= [1,2,3,4]
+	age = 18
+	return render_template('pyenhtml.html', nombre=name, lista= my_list, edad = age)
 
 
 if __name__ == '__main__':
