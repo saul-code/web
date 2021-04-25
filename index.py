@@ -1,8 +1,7 @@
-from flask import Flask, render_template
-from flask import request
+from flask import Flask, render_template, request
 
-
-app = Flask(__name__)
+#agrego una carpeta template
+app = Flask(__name__, template_folder = "templates")
 
 @app.route('/')
 def index():
@@ -12,6 +11,7 @@ def index():
 def about():
 	return render_template('about.html')
 
+#metodo con parametros
 @app.route('/params/')
 @app.route('/params/<name>/')
 @app.route('/params/<name>/<int:num>/')
